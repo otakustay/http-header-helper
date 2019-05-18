@@ -1,6 +1,6 @@
 {
   "name": "http-header-helper",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@github.com:otakustay/http-header-helper.git",
