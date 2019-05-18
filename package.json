@@ -1,0 +1,36 @@
+{
+  "name": "http-header-helper",
+  "version": "0.7.0",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "repository": "git@github.com:otakustay/http-header-helper.git",
+  "author": "otakustay <otakustay@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.com"
+  },
+  "scripts": {
+    "test": "skr test --coverage",
+    "build": "skr rollup",
+    "lint": "skr lint"
+  },
+  "files": [
+    "es",
+    "cjs"
+  ],
+  "devDependencies": {
+    "husky": "^2.3.0",
+    "reskript": "^0.15.3"
+  },
+  "dependencies": {
+    "@types/mime-types": "^2.1.0",
+    "mime-types": "^2.1.24"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint",
+      "pre-push": "yarn test && yarn build"
+    }
+  }
+}
