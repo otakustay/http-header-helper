@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "target": "ES2022",
+        "allowJs": false,
+        "esModuleInterop": true,
+        "moduleResolution": "NodeNext",
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "exactOptionalPropertyTypes": true,
+        "skipLibCheck": true,
+        "keyofStringsOnly": true,
+        "declaration": false,
+        "sourceMap": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noEmit": true
+    },
+    "ts-node": {
+        "files": true
+    },
+    "include": ["src", "scripts", "*.ts"]
+}

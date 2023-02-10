@@ -1,8 +1,15 @@
 {
   "name": "http-header-helper",
   "version": "0.8.0",
-  "main": "cjs/index.js",
-  "module": "es/index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=14.16"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "repository": "git@github.com:otakustay/http-header-helper.git",
   "author": "otakustay <otakustay@gmail.com>",
   "license": "MIT",
@@ -11,18 +18,15 @@
     "registry": "https://registry.npmjs.com"
   },
   "scripts": {
-    "test": "skr test --coverage",
-    "build": "skr rollup",
-    "lint": "skr lint"
+    "prepare": "husky install",
+    "test": "vitest run --coverage",
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint src"
   },
   "files": [
     "es",
     "cjs"
   ],
-  "devDependencies": {
-    "husky": "^2.3.0",
-    "reskript": "^0.15.3"
-  },
   "dependencies": {
     "@types/mime-types": "^2.1.0",
     "mime-types": "^2.1.24"
@@ -32,5 +36,23 @@
       "pre-commit": "yarn run lint",
       "pre-push": "yarn test && yarn build"
     }
+  },
+  "packageManager": "yarn@3.4.1",
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/eslint-plugin": "^7.19.1",
+    "@ecomfe/eslint-config": "^7.4.0",
+    "@types/babel__core": "^7",
+    "@types/eslint": "^8",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "@vitest/coverage-c8": "^0.28.4",
+    "eslint": "^8.33.0",
+    "husky": "^8.0.3",
+    "standard-version": "^9.5.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vitest": "^0.28.4"
   }
 }

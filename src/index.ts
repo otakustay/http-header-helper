@@ -1,4 +1,3 @@
-import * as path from 'path';
 import mimeTypes from 'mime-types';
 
 interface HttpHeaders {

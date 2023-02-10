@@ -59,5 +59,15 @@ typings/
 
 # next.js build output
 .next
-/cjs
-/es
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# build output
+/dist
