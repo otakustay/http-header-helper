@@ -24,8 +24,7 @@
     "lint": "eslint src"
   },
   "files": [
-    "es",
-    "cjs"
+    "dist"
   ],
   "dependencies": {
     "@types/mime-types": "^2.1.0",

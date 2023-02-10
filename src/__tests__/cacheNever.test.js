@@ -1,10 +1,10 @@
 import {test, expect} from 'vitest';
-import {cacheNever} from '../index';
+import {HttpHeaderHelper} from '../index';
 
 test('should return a valid Cache-Control header', () => {
-    const headers = cacheNever();
+    const helper = new HttpHeaderHelper('');
+    const headers = helper.cacheNever().getHttpHeaders();
     const cacheControl = headers['Cache-Control'];
-    expect(typeof cacheControl).toBe('string');
     expect(cacheControl).toMatch('no-store');
     expect(cacheControl).toMatch('must-revalidate');
 });

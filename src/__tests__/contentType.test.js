@@ -1,18 +1,26 @@
 import {test, expect} from 'vitest';
-import {contentType} from '../index';
+import {HttpHeaderHelper} from '../index';
 
 test('should return a valid content type from filename', () => {
-    expect(contentType('index.html')).toEqual({'Content-Type': 'text/html; charset=utf-8'});
+    const helper = new HttpHeaderHelper('index.html');
+    const headers = helper.contentType().getHttpHeaders();
+    expect(headers).toEqual({'Content-Type': 'text/html; charset=utf-8'});
 });
 
 test('should return a valid content type from just a extension type', () => {
-    expect(contentType('.js')).toEqual({'Content-Type': 'application/javascript; charset=utf-8'});
+    const helper = new HttpHeaderHelper('.js');
+    const headers = helper.contentType().getHttpHeaders();
+    expect(headers).toEqual({'Content-Type': 'application/javascript; charset=utf-8'});
 });
 
 test('should parse filename with a starting dot', () => {
-    expect(contentType('.js.html')).toEqual({'Content-Type': 'text/html; charset=utf-8'});
+    const helper = new HttpHeaderHelper('.js.html');
+    const headers = helper.contentType().getHttpHeaders();
+    expect(headers).toEqual({'Content-Type': 'text/html; charset=utf-8'});
 });
 
 test('should return octstream on unknown type', () => {
-    expect(contentType('.unknown')).toEqual({'Content-Type': 'application/octet-stream'});
+    const helper = new HttpHeaderHelper('.unknown');
+    const headers = helper.contentType().getHttpHeaders();
+    expect(headers).toEqual({'Content-Type': 'application/octet-stream'});
 });

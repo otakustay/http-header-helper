@@ -8,16 +8,41 @@ interface HttpHeaders {
 const CACHE_FOREVER = 'public, max-age=31536000, s-maxage=31536000, immutable';
 const CACHE_NEVER = 'no-store, must-revalidate';
 
-const hasHash = (filename: string): boolean => /[.-][0-9a-f]{8,}[.-]/.test(filename);
+const hasHash = (filename: string): boolean => /(.|-|^)[0-9a-f]{10,}[.-]/.test(filename);
 
-export const contentType = (filename: string): HttpHeaders => {
-    const mime = mimeTypes.lookup(filename) || '';
-    const contentType = mimeTypes.contentType(mime) || 'application/octet-stream';
-    return {'Content-Type': contentType};
-};
+export class HttpHeaderHelper {
+    private readonly headers: HttpHeaders = {};
 
-export const cacheForever = (): HttpHeaders => ({'Cache-Control': CACHE_FOREVER});
+    constructor(private readonly file: string) {}
 
-export const cacheNever = (): HttpHeaders => ({'Cache-Control': CACHE_NEVER});
+    contentType() {
+        const mime = mimeTypes.lookup(this.file) || '';
+        const contentType = mimeTypes.contentType(mime) || 'application/octet-stream';
+        this.headers['Content-Type'] = contentType;
+        return this;
+    }
 
-export const cacheIfHashed = (filename: string): HttpHeaders => (hasHash(filename) ? cacheForever() : cacheNever());
+    cacheForever() {
+        this.headers['Cache-Control'] = CACHE_FOREVER;
+        return this;
+    }
+
+    cacheNever() {
+        this.headers['Cache-Control'] = CACHE_NEVER;
+        return this;
+    }
+
+    cacheIfHashed() {
+        if (hasHash(this.file)) {
+            this.cacheForever();
+        }
+        else {
+            this.cacheNever();
+        }
+        return this;
+    }
+
+    getHttpHeaders() {
+        return {...this.headers};
+    }
+}
