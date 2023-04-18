@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/otakustay/http-header-helper/compare/v1.0.0...v1.1.0) (2023-04-18)
+
+
+### Features
+
+* allow custom hash length ([d42a2fa](https://github.com/otakustay/http-header-helper/commit/d42a2fad6066d00aea6b0cee3f745550fc3380aa))
+
 ## 1.0.0 (2023-02-10)
 
 
