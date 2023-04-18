@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/otakustay/http-header-helper/compare/v1.1.1...v2.0.0) (2023-04-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* use no-cache for resource revalidate
+
+### Features
+
+* use no-cache for resource revalidate ([3b0a6c2](https://github.com/otakustay/http-header-helper/commit/3b0a6c25d44ea175055484546130e65c91610333))
+
 ### [1.1.1](https://github.com/otakustay/http-header-helper/compare/v1.1.0...v1.1.1) (2023-04-18)
 
 ## [1.1.0](https://github.com/otakustay/http-header-helper/compare/v1.0.0...v1.1.0) (2023-04-18)
