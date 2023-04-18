@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/otakustay/http-header-helper/compare/v2.0.0...v2.0.1) (2023-04-18)
+
+
+### Bug Fixes
+
+* incorrect regex escape ([6969e51](https://github.com/otakustay/http-header-helper/commit/6969e51b6bce7dd7f631f2efcd431baceaa48065))
+
 ## [2.0.0](https://github.com/otakustay/http-header-helper/compare/v1.1.1...v2.0.0) (2023-04-18)
 
 
