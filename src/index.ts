@@ -8,12 +8,17 @@ interface HttpHeaders {
 const CACHE_FOREVER = 'public, max-age=31536000, s-maxage=31536000, immutable';
 const CACHE_NEVER = 'no-store, must-revalidate';
 
-const hasHash = (filename: string): boolean => /(.|-|^)[0-9a-f]{10,}[.-]/.test(filename);
+export interface Options {
+    minHashLength?: number;
+}
 
 export class HttpHeaderHelper {
     private readonly headers: HttpHeaders = {};
+    private readonly hashRegExp: RegExp;
 
-    constructor(private readonly file: string) {}
+    constructor(private readonly file: string, options?: Options) {
+        this.hashRegExp = new RegExp(`(.|-|^)[0-9a-f]{${options?.minHashLength ?? 10},}[.-]`);
+    }
 
     contentType() {
         const mime = mimeTypes.lookup(this.file) || '';
@@ -33,7 +38,7 @@ export class HttpHeaderHelper {
     }
 
     cacheIfHashed() {
-        if (hasHash(this.file)) {
+        if (this.hasHash()) {
             this.cacheForever();
         }
         else {
@@ -44,5 +49,9 @@ export class HttpHeaderHelper {
 
     getHttpHeaders() {
         return {...this.headers};
+    }
+
+    private hasHash() {
+        return this.hashRegExp.test(this.file);
     }
 }
