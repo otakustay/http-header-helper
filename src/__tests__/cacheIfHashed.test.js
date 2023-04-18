@@ -22,7 +22,7 @@ test('should cache forever if filename starts with a hash sign', () => {
 test('should not cache if filename has no hash sign', () => {
     const helper = new HttpHeaderHelper('index.html');
     const headers = helper.cacheIfHashed().getHttpHeaders();
-    expect(headers['Cache-Control']).toMatch('no-store');
+    expect(headers['Cache-Control']).toMatch('no-cache');
 });
 
 test('min hash length match', () => {

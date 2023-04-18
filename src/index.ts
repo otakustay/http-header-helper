@@ -6,7 +6,7 @@ interface HttpHeaders {
 }
 
 const CACHE_FOREVER = 'public, max-age=31536000, s-maxage=31536000, immutable';
-const CACHE_NEVER = 'no-store, must-revalidate';
+const CACHE_NEVER = 'no-cache, must-revalidate';
 
 export interface Options {
     minHashLength?: number;
