@@ -25,6 +25,12 @@ test('should not cache if filename has no hash sign', () => {
     expect(headers['Cache-Control']).toMatch('no-cache');
 });
 
+test('hash must start with specific characters', () => {
+    const helper = new HttpHeaderHelper('/86fd85f4cd-132a/index.js');
+    const headers = helper.cacheIfHashed().getHttpHeaders();
+    expect(headers['Cache-Control']).toMatch('no-cache');
+});
+
 test('min hash length match', () => {
     const helper = new HttpHeaderHelper('index.12345.js', {minHashLength: 4});
     const headers = helper.cacheIfHashed().getHttpHeaders();

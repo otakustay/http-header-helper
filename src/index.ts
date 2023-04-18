@@ -17,7 +17,7 @@ export class HttpHeaderHelper {
     private readonly hashRegExp: RegExp;
 
     constructor(private readonly file: string, options?: Options) {
-        this.hashRegExp = new RegExp(`(.|-|^)[0-9a-f]{${options?.minHashLength ?? 10},}[.-]`);
+        this.hashRegExp = new RegExp(`(\\.|-|^)[0-9a-f]{${options?.minHashLength ?? 10},}[.-]`);
     }
 
     contentType() {
